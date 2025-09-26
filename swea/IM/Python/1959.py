@@ -1,4 +1,5 @@
 # SWEA 1959 두 개의 숫자열
+
 T = int(input())
  
 for t in range(1, T+1):

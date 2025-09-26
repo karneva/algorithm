@@ -1,4 +1,5 @@
 # SWEA 1961 숫자 배열 회전
+
 def round_arr(arr):
     arr_r = [[0] * N for _ in range(N)]
     for i in range(N):
