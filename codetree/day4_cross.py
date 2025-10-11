@@ -1,5 +1,4 @@
-import sys
-sys.stdin = open('input.txt')
+# codetree 십자 모양 폭발
 
 n = int(input())
 grid = [list(map(int, input().split())) for _ in range(n)]
@@ -33,3 +32,31 @@ while cnt < n:
 
 for g in grid:
     print(*g)
+    
+'''
+input
+4
+1 2 4 3
+3 2 2 3
+3 1 6 2
+4 5 4 4
+2 3
+output
+1 0 0 0
+3 2 0 3
+3 1 0 2
+4 5 4 4
+
+input
+4
+1 2 4 3
+3 2 2 3
+3 1 6 2
+4 5 4 4
+3 3
+output
+0 0 0 0
+1 2 0 3
+3 2 0 3
+4 5 0 4
+'''
