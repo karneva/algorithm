@@ -1,21 +1,55 @@
-import sys
-sys.stdin = open('input.txt')
+# codetree 1차원 윳놀이
 
-def game(board, k, nums, idx, move):
-    global cnt
-    if idx >= len(board):
-        cnt += 1
-        return
+def solve():
+    N, M, K = map(int, input().split())
+    moves = list(map(int, input().split()))
 
-    if move == len(nums):
-        return
+    start = tuple([K] + [0] * (M - 1))
 
-    game(board, k, nums, idx+1, )
+    states = {start}
+
+    for t in range(N):
+        d = moves[t]
+        next_states = set()
+        for hist in states:
+            made = False
+            for p_idx in range(M - 1):
+                cnt_here = hist[p_idx]
+                if cnt_here == 0:
+                    continue
+                pos = p_idx + 1
+                new_pos = pos + d
+                if new_pos > M:
+                    new_pos = M
+                np_idx = new_pos - 1
+
+                new_hist = list(hist)
+                new_hist[p_idx] -= 1
+                new_hist[np_idx] += 1
+                next_states.add(tuple(new_hist))
+                made = True
+            if not made:
+                next_states.add(hist)
+
+        states = next_states
+
+    ans = max(h[M - 1] for h in states)
+    print(ans)
+
 
 if __name__ == "__main__":
-    n, m, k = map(int, input().split())
-    nums = list(map(int, input().split()))
-    board = [i for i in range(1, m+1)]
+    solve()
 
-    cnt = 0
-    game(board, k, nums, 0, 0)
+'''
+input
+4 6 3
+2 4 2 4
+output
+2
+
+input
+6 10 3
+5 3 2 2 3 3
+output
+2
+'''
