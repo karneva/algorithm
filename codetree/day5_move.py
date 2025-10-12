@@ -1,5 +1,4 @@
-import sys
-sys.stdin = open('input.txt')
+# codetree 숫자가 더 큰 인접한 곳으로 이동
 
 def solve(cur_i, cur_j):
     print(arr[cur_i][cur_j], end=' ')
@@ -19,3 +18,23 @@ delta = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 
 solve(r-1, c-1)
 print()
+
+'''
+input
+4 2 2
+1 2 2 3
+3 5 10 15
+3 8 11 2
+4 5 4 4
+output
+5 8 11
+
+input
+4 1 1
+1 2 2 3
+3 5 10 15
+3 8 11 2
+4 5 4 4
+output
+1 3 5 8 11
+'''

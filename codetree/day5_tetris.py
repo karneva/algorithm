@@ -1,5 +1,4 @@
-import sys
-sys.stdin = open('input.txt')
+# codetree 떨어지는 1자 블록
 
 n, m, k = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
@@ -17,3 +16,29 @@ while True:
 
 for g in grid:
     print(*g)
+
+'''
+input
+4 3 1
+0 0 0 0
+0 0 0 1
+1 0 0 1
+1 1 1 1
+output
+0 0 0 0
+1 1 1 1
+1 0 0 1
+1 1 1 1
+
+input
+4 2 2
+0 0 0 0
+0 0 0 1
+1 0 0 1
+1 1 1 1
+output
+0 0 0 0
+0 0 0 1
+1 1 1 1
+1 1 1 1
+'''

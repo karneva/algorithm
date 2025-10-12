@@ -1,5 +1,4 @@
-import sys
-sys.stdin = open('input.txt')
+# codetree 벽 짚고 미로 탈출하기
 
 N = int(input())
 x, y = map(int, input().split())
@@ -9,7 +8,7 @@ arr = [list(input()) for _ in range(N)]
 delta = [[0, 1], [1, 0], [0, -1], [-1, 0]]
 
 cur_i, cur_j = x - 1, y - 1
-dir = 0  # 시작 방향(동쪽). 문제에서 다른 시작 방향을 요구하면 여기만 바꾸면 됩니다.
+dir = 0  # 시작 방향(동쪽).
 time = 0
 
 visited = set()
@@ -19,10 +18,10 @@ def in_range(i, j):
     return 0 <= i < N and 0 <= j < N
 
 while True:
-    right_dir = (dir + 1) % 4        # 오른쪽
-    left_dir  = (dir + 3) % 4        # 왼쪽
-    fi, fj    = cur_i + delta[dir][0],       cur_j + delta[dir][1]        # 정면
-    ri, rj    = cur_i + delta[right_dir][0], cur_j + delta[right_dir][1]  # 오른쪽
+    right_dir = (dir + 1) % 4       # 오른쪽
+    left_dir = (dir + 3) % 4        # 왼쪽
+    fi, fj = cur_i + delta[dir][0],       cur_j + delta[dir][1]        # 정면
+    ri, rj = cur_i + delta[right_dir][0], cur_j + delta[right_dir][1]  # 오른쪽
 
     moved = False
 
@@ -69,3 +68,41 @@ while True:
         visited.add((cur_i, cur_j, dir))
 
 print(time)
+
+'''
+input
+3
+1 1
+.#.
+#..
+...
+output
+1
+
+input
+3
+1 1
+...
+##.
+...
+output
+7
+
+input
+3
+1 1
+...
+#..
+...
+output
+5
+
+input
+3
+1 2
+...
+.#.
+...
+output
+-1
+'''
