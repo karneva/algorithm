@@ -3,8 +3,6 @@
 import sys
 from collections import deque
 
-sys.stdin = open("input.txt")
-
 M, N, H = map(int, input().split())
 
 box = [[list(map(int, input().split())) for _ in range(N)] for _ in range(H)]
@@ -17,12 +15,12 @@ for z in range(H):
     for x in range(N):
         for y in range(M):
             if box[z][x][y] == 1:
-                tomato.append((z, x, y))
+                tomato.append((z, x, y, 0))
 
-cnt = 0
+day = 0
 
 while tomato:
-    cz, cx, cy = tomato.popleft()
+    cz, cx, cy, cnt = tomato.popleft()
 
     for dz, dx, dy in delta:
         nz, nx, ny = cz+dz, cx+dx, cy+dy
@@ -30,8 +28,14 @@ while tomato:
         if 0 <= nz < H and 0 <= nx < N and 0 <= ny < M:
             if box[nz][nx][ny] == 0:
                 box[nz][nx][ny] = 1
-                tomato.append((nz, nx, ny))
+                tomato.append((nz, nx, ny, cnt+1))
 
-    cnt += 1
+    day = cnt
 
-print(cnt)
+for z in range(H):
+    for x in range(N):
+        if 0 in box[z][x]:
+            print(-1)
+            sys.exit()
+
+print(day)
