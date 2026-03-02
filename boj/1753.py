@@ -25,10 +25,10 @@ while pq:
         continue
 
     for nxt, w in graph[now]:
-        nd = cur_dist + w
-        if nd < dist[nxt]:
-            dist[nxt] = nd
-            heapq.heappush(pq, (nd, nxt))
+        nxt_dist = cur_dist + w
+        if nxt_dist < dist[nxt]:
+            dist[nxt] = nxt_dist
+            heapq.heappush(pq, (nxt_dist, nxt))
 
 for i in range(1, V + 1):
     print(dist[i] if dist[i] != INF else "INF")
