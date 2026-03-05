@@ -31,3 +31,12 @@ N, M = map(int, input().split())
 graph = [list(input().rstrip()) for _ in range(N)]
 
 delta = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+
+sx, sy, ex, ey = 0, 0, 0, 0
+
+for i in range(N):
+    for j in range(M):
+        if graph[i][j] == 'S':
+            sx, sy = i, j
+        elif graph[i][j] == 'F':
+            ex, ey = i, j
